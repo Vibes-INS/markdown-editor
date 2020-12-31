@@ -1,0 +1,116 @@
+.textarea
+  width 100%
+  height 100%
+  color var(--font-color-1)
+  font-size var(--font-size-1)
+  border var(--line-width-1) var(--line-color-1) solid
+  resize none
+  outline none
+  border-radius 10px
+  padding 65px 15px 15px
+  font-weight 500
+  caret-color var(--core-color)
+
+.textarea:focus
+  border var(--line-width-1) var(--core-color) solid
+  box-shadow 0 0 6px var(--core-color)
+
+.layout
+  width 100%
+  height 100%
+  position relative
+
+.toolbar
+  position absolute
+  top 0
+  left 0
+  width calc(100% - 20px)
+  display inline-flex
+  height 40px
+  background-color var(--background-color-2)
+  margin 10px 10px 0
+  border-radius 10px
+  overflow hidden
+  box-shadow var(--shadow)
+
+.toolbar .item
+  min-width 30px
+  height 30px
+  line-height 30px
+  cursor pointer
+  text-align center
+  user-select none
+  background-color rgba(0, 0, 0, 0)
+  margin 5px
+  border-radius 5px
+  font-size var(--font-size-1)
+  color var(--font-color-1)
+
+.toolbar .item:hover
+  background-color rgba(0, 0, 0, 0.1)
+
+.toolbar .item:active
+  background-color rgba(0, 0, 0, 0.2)
+
+.show-image-dialog
+  position fixed
+  top 0
+  left 0
+  width 100vw
+  height 100vh
+  border none
+  background-color rgba(0, 0, 0, 0)
+
+.show-image-dialog .mask
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background-color rgba(0, 0, 0, 0.1)
+  animation dialog-show-opacity 0.2s
+
+.show-image-dialog .main
+  position fixed
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+  padding 10px
+  box-shadow var(--shadow)
+  border-radius 5px
+  border none
+  width 90%
+  max-width 500px
+  min-height 250px
+  background-color var(--dialog-background-color-1)
+  color var(--font-color-1)
+  animation dialog-show-main 0.2s ease-out
+  user-select none
+
+  .img-group
+    display flex
+    padding 10px 0 10px
+    justify-content space-between
+    flex-wrap wrap
+
+  .img-container
+    display inline-flex
+    flex-direction column
+
+  .img
+    width auto
+    max-height 200px
+    margin 10px 10px
+    cursor pointer
+
+@keyframes dialog-show-opacity
+  0%
+    opacity 0
+
+@keyframes dialog-show-main
+  0%
+    opacity 0
+    transform translate(-50%, -60%)
+
+  100%
+    transform translate(-50%, -50%)

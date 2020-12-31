@@ -1,0 +1,9 @@
+
+<main class="layout">
+  <div class="item">
+    <app-editor (changeContent)="updateMarkdownContent($event)"></app-editor>
+  </div>
+  <div class="item">
+    <app-view [markdown]="markdown"></app-view>
+  </div>
+</main>
