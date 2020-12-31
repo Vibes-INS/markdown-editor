@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "memo-markdown": {
+    "markdown-editor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/memo-markdown",
+            "outputPath": "dist/markdown-editor",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "memo-markdown:build"
+            "browserTarget": "markdown-editor:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "memo-markdown:build:production"
+              "browserTarget": "markdown-editor:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "memo-markdown:build"
+            "browserTarget": "markdown-editor:build"
           }
         },
         "test": {
@@ -114,18 +114,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "memo-markdown:serve"
+            "devServerTarget": "markdown-editor:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "memo-markdown:serve:production"
+              "devServerTarget": "markdown-editor:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "memo-markdown",
+  "defaultProject": "markdown-editor",
   "cli": {
     "analytics": "9b7b906e-5a88-44a1-920d-9feec4372d11"
   }
