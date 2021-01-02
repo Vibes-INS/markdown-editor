@@ -1,7 +1,28 @@
 <div class="layout">
-  <div>
-    <button>导出</button>
-    <button>背景</button>
+
+  <div class="button-group">
+    <button (click)="outputDialog = true">Output</button>
+    <button>BackGround</button>
   </div>
   <div #outputElement class="markdown-editor"></div>
 </div>
+
+<app-dialog
+  [open]="outputDialog"
+  (cancel)="outputDialog = false"
+  (ok)="outputDialog = false"
+  [footer]="outputDialogFooter"
+  [width]="300"
+>
+  <h4>Output</h4>
+
+  <label class="input-group">
+    <span class="field">title:</span>
+    <input type="text" #outputTitleInput>
+  </label>
+
+  <ng-template #outputDialogFooter>
+    <button>Output Images</button>
+    <button (click)="outputHtml(outputTitleInput.value)">Output HTML</button>
+  </ng-template>
+</app-dialog>

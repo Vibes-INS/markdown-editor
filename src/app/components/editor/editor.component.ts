@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core'
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs'
 import { debounceTime, switchMap, tap } from 'rxjs/operators'
 import { NgxIndexedDBService } from 'ngx-indexed-db'
@@ -28,14 +28,12 @@ export class EditorComponent implements OnInit, OnDestroy {
   private readonly changeSubject = new Subject<string>()
   private readonly inputFileElement: HTMLInputElement
 
-  @ViewChild('dialogElement', { static: true }) private readonly dialogElement: ElementRef<HTMLDialogElement>
-  private _showImageDialog = false
+  _showImageDialog = false
+  get showImageDialog() {
+    return this._showImageDialog
+  }
   set showImageDialog(val: boolean) {
     this._showImageDialog = val
-    this.dialogElement.nativeElement.open = val
-    if (this.dialogElement.nativeElement.open) {
-      this.queryImageAll().subscribe()
-    }
   }
   imageList: ImageDoc[]
 
@@ -78,12 +76,16 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.inputFileElement.click()
   }
 
-  addImageToContent(id: number): void {
-    this.content += `![left](base64:${id})\n`
-    this.showImageDialog = false
+  showGallery(): void {
+    this.showImageDialog = true
+    this.queryImageAll().subscribe()
   }
 
-  queryImageAll(): Observable<ImageDoc[]> {
+  addImageToContent(id: number): void {
+    this.content += `![left](base64:${id})\n`
+  }
+
+  private queryImageAll() {
     return this.db.getAll(this.imageDbname).pipe(tap((docs: ImageDoc[]) => this.imageList = docs))
   }
 

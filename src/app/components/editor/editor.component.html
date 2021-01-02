@@ -1,28 +1,30 @@
 <main class="layout">
   <div class="toolbar">
-    <div class="item" (click)="uploadImage()">上传图片</div>
-    <div class="item" (click)="showImageDialog = true">图片库</div>
+    <div class="item" (click)="uploadImage()">Img</div>
+    <div class="item" (click)="showGallery()">Gallery</div>
   </div>
   <textarea class="textarea" [(ngModel)]="content"></textarea>
 </main>
 
-<dialog class="show-image-dialog" #dialogElement>
-  <div class="mask" (click)="showImageDialog = false"></div>
-  <div class="main">
-    <h4>图片列表</h4>
+<app-dialog
+  class="show-image-dialog"
+  [open]="showImageDialog"
+  (cancel)="showImageDialog = false"
+  (ok)="showImageDialog = false"
+>
+  <h4>Gallery (Click add image)</h4>
 
-    <div class="img-group">
-      <div class="img-container" *ngFor="let img of imageList">
-        <img
-          class="img"
-          (dragstart)="false"
-          (click)="addImageToContent(img.id)"
-          [src]="img.base64"
-          [alt]="(img.created_time | date: 'yyyy-MM-dd:ss:mm') + '上传'"
-          [title]="(img.created_time | date: 'yyyy-MM-dd:ss:mm') + '上传'"
-        >
-        <button (click)="delImage(img.id)">删除</button>
-      </div>
+  <div class="img-group">
+    <div class="img-container" *ngFor="let img of imageList">
+      <img
+        class="img"
+        (dragstart)="false"
+        (click)="addImageToContent(img.id)"
+        [src]="img.base64"
+        [alt]="(img.created_time | date: 'yyyy-MM-dd:ss:mm') + '上传'"
+        [title]="(img.created_time | date: 'yyyy-MM-dd:ss:mm') + '上传'"
+      >
+      <button (click)="delImage(img.id)">Delete</button>
     </div>
   </div>
-</dialog>
+</app-dialog>

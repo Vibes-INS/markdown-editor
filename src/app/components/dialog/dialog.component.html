@@ -1,0 +1,15 @@
+<dialog class="dialog"  #dialogElement>
+  <div class="mask" (click)="clickMask()"></div>
+  <div class="main" [style.max-width.px]="width">
+    <ng-content></ng-content>
+
+    <div class="button-group footer">
+      <ng-container *ngIf="!footer">
+        <button (click)="cancel.emit()">Cancel</button>
+        <button (click)="cancel.emit()">OK</button>
+      </ng-container>
+
+      <ng-container *ngIf="footer" [ngTemplateOutlet]="footer"></ng-container>
+    </div>
+  </div>
+</dialog>

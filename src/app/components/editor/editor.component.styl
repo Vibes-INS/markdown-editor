@@ -31,7 +31,7 @@
   margin 10px 10px 0
   border-radius 10px
   overflow hidden
-  box-shadow var(--shadow)
+  box-shadow var(--shadow-1)
 
 .toolbar .item
   min-width 30px
@@ -53,38 +53,14 @@
   background-color rgba(0, 0, 0, 0.2)
 
 .show-image-dialog
-  position fixed
-  top 0
-  left 0
-  width 100vw
-  height 100vh
-  border none
-  background-color rgba(0, 0, 0, 0)
-
-.show-image-dialog .mask
-  position absolute
-  top 0
-  left 0
-  width 100%
-  height 100%
-  background-color rgba(0, 0, 0, 0.1)
-  animation dialog-show-opacity 0.2s
-
-.show-image-dialog .main
-  position fixed
-  top 50%
-  left 50%
-  transform translate(-50%, -50%)
   padding 10px
-  box-shadow var(--shadow)
-  border-radius 5px
+  border-radius 10px
   border none
   width 90%
   max-width 500px
   min-height 250px
   background-color var(--dialog-background-color-1)
   color var(--font-color-1)
-  animation dialog-show-main 0.2s ease-out
   user-select none
 
   .img-group
@@ -92,6 +68,8 @@
     padding 10px 0 10px
     justify-content space-between
     flex-wrap wrap
+    height 500px
+    overflow auto
 
   .img-container
     display inline-flex
@@ -102,15 +80,3 @@
     max-height 200px
     margin 10px 10px
     cursor pointer
-
-@keyframes dialog-show-opacity
-  0%
-    opacity 0
-
-@keyframes dialog-show-main
-  0%
-    opacity 0
-    transform translate(-50%, -60%)
-
-  100%
-    transform translate(-50%, -50%)

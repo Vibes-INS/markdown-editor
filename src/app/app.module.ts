@@ -6,13 +6,15 @@ import { EditorComponent } from './components/editor/editor.component'
 import { ViewComponent } from './components/view/view.component'
 import { FormsModule } from '@angular/forms'
 import { NgxIndexedDBModule } from 'ngx-indexed-db'
-import dbConfig from './config/db-config'
+import dbConfig from './config/db-config';
+import { DialogComponent } from './components/dialog/dialog.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
     ViewComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

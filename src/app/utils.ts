@@ -9,5 +9,8 @@ export function fileToBase64(file: File): Observable<string> {
       subscriber.complete()
     }
   })
+}
 
+export function sleep(ms: number): Promise<number> {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
